@@ -595,12 +595,8 @@ var pd = {
               (pd.filters.score.gt === false &&
                 parseFloat(item.data.score) < pd.filters.score.num))),
         date:
-          !pd.filters.date.enabled ||
-          (pd.filters.date.enabled &&
-            ((pd.filters.date.gt === true &&
-              parseFloat(item.data.created_utc) > pd.filters.date.num) ||
-              (pd.filters.date.gt === false &&
-                parseFloat(item.data.created_utc) < pd.filters.date.num))),
+          new Date(item.data.created_utc * 1000) > new Date('2014-01-01') &&
+          new Date(item.data.created_utc * 1000) < new Date('2024-10-16')
       };
       for (var key in check) {
         if (!check[key]) {
